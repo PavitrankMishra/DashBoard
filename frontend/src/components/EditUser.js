@@ -1,6 +1,10 @@
+import { Link } from "react-router-dom";
+
 const EditUser = () => {
   return (
-    <div>Component to edit user</div>
+    <>
+      <div>Component to edit user</div>
+    </>
   );
 };
 

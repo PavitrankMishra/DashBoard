@@ -121,8 +121,8 @@ app.put("/api/users/:id", (req, res) => {
 
 // Route to delete a user by ID
 
-app.delete("api/users/:id", (req, res) => {
-  const userId = pareInt(req.params.id);
+app.delete("/api/users/:id", (req, res) => {
+  const userId = parseInt(req.params.id);
   const filePath = path.join(__dirname, "db.json");
 
   fs.readFile(filePath, "utf8", (err, data) => {
