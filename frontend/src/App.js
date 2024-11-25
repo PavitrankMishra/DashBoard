@@ -2,6 +2,9 @@ import { useState, useEffect } from "react";
 import "./App.css";
 import Homepage from "./components/HomePage";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
+import EditUser from "./components/EditUser";
+import DeleteUser from "./components/DeleteUser";
+import AddUsers from "./components/AddUsers";
 
 function App() {
   const [users, setUsers] = useState([]);
@@ -24,7 +27,10 @@ function App() {
   return (
     <BrowserRouter>
       <Routes>
-        <Route index element={<Homepage users={users} setUsers={setUsers}/>} />
+        <Route index element={<Homepage users={users} setUsers={setUsers} />} />
+        <Route path="addusers" element={<AddUsers users={users} setUsers={setUsers}/>} />
+        <Route path="editusers" element={<EditUser />} />
+        <Route path="deleteusers" element={<DeleteUser />} />
       </Routes>
     </BrowserRouter>
   );

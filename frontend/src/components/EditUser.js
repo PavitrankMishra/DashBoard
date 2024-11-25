@@ -1,5 +1,7 @@
 const EditUser = () => {
-  return <button>Edit User</button>;
+  return (
+    <div>Component to edit user</div>
+  );
 };
 
 export default EditUser;

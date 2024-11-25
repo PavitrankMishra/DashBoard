@@ -87,7 +87,6 @@ app.post("/api/users", (req, res) => {
   });
 });
 
-
 // Route to update an existing user by ID
 
 app.put("/api/users/:id", (req, res) => {
@@ -130,24 +129,35 @@ app.delete("api/users/:id", (req, res) => {
     if (err) {
       console.log("Error reading file");
       res.status(500).send({ message: "Unable to read data file" });
-    } else {
-      let users = JSON.parse(data).users;
-      const userIndex = users.findIndex((u) => u.id === userId);
-      if (userIndex !== -1) {
-        users.splice(userIndex, 1);
-
-        fs.writeFile(filePath, JSON.stringify({ users }), "utf8", (err) => {
-          if (err) {
-            console.log("Error writing file: " + err);
-            res.status(500).send({ error: "Unable to send file" });
-          } else {
-            res.status(204).send();
-          }
-        });
-      } else {
-        res.status(404).send({ error: "User not found" });
-      }
+      return;
     }
+
+    let userData;
+    try {
+      userData = JSON.parse(data);
+    } catch (error) {
+      console.log("Error parsing json: " + err);
+      res.status(500).send({ error: "Data corruption" });
+    }
+
+    const updatedUsers = userData.users.filter((user) => user.id !== userId);
+
+    if(updatedUsers.length == userData.users.length) {
+      res.status(400).send({error: "User not found"});
+      return;
+    }
+
+    userData.users = updatedUsers;
+
+    fs.writeFile(filePath, JSON.stringify(userData, null, 2), (err) => {
+      if(err) {
+        console.error("Unable to write file: ", err);
+        res.status(500).send({error: "Unable to save updated file: " });
+        return;
+      }
+      console.log("User deleted successfully");
+      res.status(200).send({message: "User updated successfully"});
+    })
   });
 });
 app.get("/", (req, res) => {
