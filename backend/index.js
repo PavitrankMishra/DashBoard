@@ -2,12 +2,16 @@ const express = require("express");
 const path = require("path");
 const app = express();
 const fs = require("fs");
+const port = 5000;
 
-const port = 3000;
+const cors = require("cors");
+app.use(cors());
+
+app.use(express.json());
 
 // Route to get all the users
 
-app.get("/api/users", (req, res) => {
+app.get("/", (req, res) => {
   const filePath = path.join(__dirname, "db.json");
   fs.readFile(filePath, "utf8", (err, data) => {
     if (err) {
@@ -40,12 +44,85 @@ app.get("/api/users/:id", (req, res) => {
   });
 });
 
+// Route to add a new user
+app.post("/api/users", (req, res) => {
+  console.log(req.body);
+  const { name, age, country, role, status } = req.body;
+  const newUser = { name, age, country, role, status };
+  console.log(newUser);
+  let usersdata = [];
+
+  const filePath = path.join(__dirname, "db.json");
+  fs.readFile(filePath, "utf8", (err, data) => {
+    if (err) {
+      console.log("Error readingfile: " + err);
+      res.status(500).send({ error: "Unable to read data file" });
+    } else {
+      console.log(data);
+
+      if (data) {
+        try {
+          usersdata = JSON.parse(data);
+        } catch (err) {
+          console.log("Error parsing json: " + err);
+        }
+      }
+    }
+
+    usersdata.users.push(data);
+    fs.writeFile(filePath, JSON.stringify(usersdata, null, 2), (err) => {
+      if (err) {
+        console.error("Error writing to the file:", err);
+        return;
+      }
+      console.log("New user added successfully!");
+    });
+  });
+});
+// app.post("/api/users", (req, res) => {
+//   console.log(req.body);
+//   const { name, age, country, role, status } = req.body;
+//   console.log(name);
+//   console.log(age);
+//   console.log(country);
+//   console.log(role);
+//   console.log(status);
+
+//   const newUser = { name, age, country, role, status };
+//   console.log(newUser);
+//   const filePath = path.join(__dirname, "db.json");
+//   fs.readFile(filePath, "utf8", (err, data) => {
+//     if (err) {
+//       console.log("Error reading file: " + err);
+//       res.status(500).send({ error: "Unable to read data file: " });
+//     } else {
+//       if (data) {
+//         try {
+//           users = JSON.parse(data);
+//         } catch (error) {
+//           console.log("Error parsing json: " + error);
+//         }
+//           fs.writeFile(filePath, JSON.stringify({ users }), "utf-8", (err) => {
+//             if (err) {
+//               console.log("Error writing to file: " + err);
+//               res.status(500).send({ error: "Unable to write data file" });
+//             } else {
+//               res.json(...users, newUser);
+//               Console.log("User added successfully");
+//             }
+//           });
+
+//       }
+//     }
+//   });
+// });
+
 // Route to update an existing user by ID
 
 app.put("/api/users/:id", (req, res) => {
   const userId = parseInt(req.params.id);
   const updatedUser = req.body;
-  const filepath = path.join(__dirname, "db.json");
+  const filePath = path.join(__dirname, "db.json");
 
   fs.readFile(filePath, "utf8", (err, data) => {
     if (err) {
