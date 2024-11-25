@@ -1,6 +1,8 @@
 import styles from "./Homepage.css";
 import Header from "./Header";
 import { useState } from "react";
+import EditUser from "./EditUser";
+import DeleteUser from "./DeleteUser";
 
 const HomePage = ({ users, setUsers }) => {
   const [formData, setFormData] = useState({
@@ -126,6 +128,12 @@ const HomePage = ({ users, setUsers }) => {
           </label>
         </div>
         <button onClick={handleAddUser}> Add User </button>
+      </div>
+      <div>
+        <EditUser />
+      </div>
+      <div>
+        <DeleteUser />
       </div>
       <div>
         <h1>Users List</h1>

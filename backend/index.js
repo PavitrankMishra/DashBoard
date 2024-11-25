@@ -86,43 +86,7 @@ app.post("/api/users", (req, res) => {
     });
   });
 });
-// app.post("/api/users", (req, res) => {
-//   console.log(req.body);
-//   const { name, age, country, role, status } = req.body;
-//   console.log(name);
-//   console.log(age);
-//   console.log(country);
-//   console.log(role);
-//   console.log(status);
 
-//   const newUser = { name, age, country, role, status };
-//   console.log(newUser);
-//   const filePath = path.join(__dirname, "db.json");
-//   fs.readFile(filePath, "utf8", (err, data) => {
-//     if (err) {
-//       console.log("Error reading file: " + err);
-//       res.status(500).send({ error: "Unable to read data file: " });
-//     } else {
-//       if (data) {
-//         try {
-//           users = JSON.parse(data);
-//         } catch (error) {
-//           console.log("Error parsing json: " + error);
-//         }
-//           fs.writeFile(filePath, JSON.stringify({ users }), "utf-8", (err) => {
-//             if (err) {
-//               console.log("Error writing to file: " + err);
-//               res.status(500).send({ error: "Unable to write data file" });
-//             } else {
-//               res.json(...users, newUser);
-//               Console.log("User added successfully");
-//             }
-//           });
-
-//       }
-//     }
-//   });
-// });
 
 // Route to update an existing user by ID
 
