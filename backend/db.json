@@ -2,11 +2,12 @@
   "users": [
     {
       "id": 3,
-      "name": "Alice Johnson",
+      "name": "James Anderson",
       "age": 28,
       "country": "Rssia",
       "role": "Read",
-      "status": "Active"
+      "status": "Active",
+      "email": "james@gmail.com"
     },
     {
       "id": 4,

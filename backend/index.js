@@ -91,31 +91,34 @@ app.post("/api/users", (req, res) => {
 
 app.put("/api/users/:id", (req, res) => {
   const userId = parseInt(req.params.id);
-  const updatedUser = req.body;
+  const { name, email, age } = req.body;
   const filePath = path.join(__dirname, "db.json");
 
   fs.readFile(filePath, "utf8", (err, data) => {
     if (err) {
-      console.log("Error reading file: " + err);
-      res.status(500).send({ error: "Unable to read data file: " });
-    } else {
-      const users = JSON.parse(data).users;
-      const userIndex = users.findIndex((u) => u.id === userId);
-      if (userIndex !== -1) {
-        users[userIndex] = { ...users[userIndex], ...updatedUser };
-
-        fs.writeFile(filePath, JSON.stringify({ users }), "utf8", (err) => {
-          if (err) {
-            console.log("Error writing to file: " + err);
-            res.status(500).send({ error: "Unable to write data file" });
-          } else {
-            res.json(users[userIndex]);
-          }
-        });
-      } else {
-        res.status(400).send({ error: "User not found" });
-      }
+      return res.status(500).send({ message: "Error reading data file" });
     }
+
+    const userData = JSON.parse(data);
+    const userIndex = userData.users.findIndex((user) => user.id === userId);
+
+    if (userIndex === -1) {
+      return res.status(404).send({ message: "User not found" });
+    }
+
+    userData.users[userIndex] = {
+      ...userData.users[userIndex],
+      name,
+      email,
+      age,
+    };
+
+    fs.writeFile(filePath, JSON.stringify(userData, null, 2), (err) => {
+      if (err) {
+        return res.status(500).send({ message: "Error saving data" });
+      }
+      res.status(200).send(userData.users[userIndex]);
+    });
   });
 });
 
@@ -142,22 +145,22 @@ app.delete("/api/users/:id", (req, res) => {
 
     const updatedUsers = userData.users.filter((user) => user.id !== userId);
 
-    if(updatedUsers.length == userData.users.length) {
-      res.status(400).send({error: "User not found"});
+    if (updatedUsers.length == userData.users.length) {
+      res.status(400).send({ error: "User not found" });
       return;
     }
 
     userData.users = updatedUsers;
 
     fs.writeFile(filePath, JSON.stringify(userData, null, 2), (err) => {
-      if(err) {
+      if (err) {
         console.error("Unable to write file: ", err);
-        res.status(500).send({error: "Unable to save updated file: " });
+        res.status(500).send({ error: "Unable to save updated file: " });
         return;
       }
       console.log("User deleted successfully");
-      res.status(200).send({message: "User updated successfully"});
-    })
+      res.status(200).send({ message: "User updated successfully" });
+    });
   });
 });
 app.get("/", (req, res) => {
