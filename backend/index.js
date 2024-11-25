@@ -46,36 +46,43 @@ app.get("/api/users/:id", (req, res) => {
 
 // Route to add a new user
 app.post("/api/users", (req, res) => {
-  console.log(req.body);
-  const { name, age, country, role, status } = req.body;
-  const newUser = { name, age, country, role, status };
-  console.log(newUser);
-  let usersdata = [];
+  const { id, name, age, country, role, status } = req.body;
 
+  const newUser = { id, name, age, country, role, status };
   const filePath = path.join(__dirname, "db.json");
+
   fs.readFile(filePath, "utf8", (err, data) => {
     if (err) {
-      console.log("Error readingfile: " + err);
+      console.log("Error reading file: " + err);
       res.status(500).send({ error: "Unable to read data file" });
-    } else {
-      console.log(data);
-
-      if (data) {
-        try {
-          usersdata = JSON.parse(data);
-        } catch (err) {
-          console.log("Error parsing json: " + err);
-        }
-      }
+      return;
     }
 
-    usersdata.users.push(data);
-    fs.writeFile(filePath, JSON.stringify(usersdata, null, 2), (err) => {
+    let usersData;
+    try {
+      usersData = JSON.parse(data);
+    } catch (err) {
+      console.log("Error parsing JSON: " + err);
+      res.status(500).send({ error: "Data corruption" });
+      return;
+    }
+
+    // Update the `id` dynamically to avoid duplicates
+    newUser.id =
+      usersData.users.length > 0
+        ? usersData.users[usersData.users.length - 1].id + 1
+        : 1;
+
+    usersData.users.push(newUser);
+
+    fs.writeFile(filePath, JSON.stringify(usersData, null, 2), (err) => {
       if (err) {
-        console.error("Error writing to the file:", err);
+        console.error("Error writing to file:", err);
+        res.status(500).send({ error: "Unable to save user" });
         return;
       }
       console.log("New user added successfully!");
+      res.status(200).send(newUser);
     });
   });
 });

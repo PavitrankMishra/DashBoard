@@ -3,10 +3,8 @@ import Header from "./Header";
 import { useState } from "react";
 
 const HomePage = ({ users, setUsers }) => {
-  console.log(users);
-  console.log(users.length);
   const [formData, setFormData] = useState({
-    id:Number(users.length + 1),
+    id: 0,
     name: "",
     age: "",
     country: "",
@@ -30,34 +28,32 @@ const HomePage = ({ users, setUsers }) => {
       !formData.role ||
       !formData.status
     ) {
-      alert("All fields arerequired!");
+      alert("All fields are required!");
       return;
     }
 
-    //   try {
-    //     const response = await fetch("http://localhost:5000/api/users", {
-    //       method: "POST",
-    //       headers: {
-    //         "Content-Type": "application/json",
-    //       },
-    //       body: JSON.stringify(formData),
-    //     });
+    try {
+      const response = await fetch("http://localhost:5000/api/users", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(formData),
+      });
 
-    //     if(!response.ok) {
-    //       console.log("Failed to add user");
-    //     }
+      if (!response.ok) {
+        throw new Error("Failed to add user");
+      }
 
-    //     const newUser = await response.json();
-    //     console.log("Resppnse from the server: " + newUser);
-    //     setUsers((prevUsers) => [...prevUsers, newUser]);
-    //     setFormData({name: "", age:"", country:"", role:"",status:""});
-    //   } catch (err) {
-    //     console.log(err);
-    //   }
+      const newUser = await response.json();
+      console.log(newUser);
+      // Fetch updated users list after successful addition
+      setUsers((prev) => [...prev, newUser]);
 
-    console.log(formData);
-    setUsers((prev) => [...prev, formData]);
-    console.log(users);
+      alert("User added successfully!");
+    } catch (error) {
+      console.error("Error adding user:", error);
+    }
   };
   return (
     <>
