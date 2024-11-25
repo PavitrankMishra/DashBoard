@@ -1,37 +1,28 @@
 {
   "users": [
     {
-      "id": 3,
+      "id": 1,
       "name": "James Anderson",
       "age": 28,
-      "country": "Rssia",
-      "role": "Read",
-      "status": "Active",
-      "email": "james@gmail.com"
-    },
-    {
-      "id": 4,
-      "name": "Pavitrank Mishra",
-      "age": "21",
-      "country": "India",
+      "email": "james@gmail.com",
       "role": "Read",
       "status": "Active"
     },
     {
-      "id": 5,
+      "id": 2,
+      "name": "Pavitrank Mishra",
+      "age": "21",
+      "email": "pavitrank2002@gmail.com",
+      "role": "Read",
+      "status": "Active"
+    },
+    {
+      "id": 3,
       "name": "Jimmy",
       "age": "22",
-      "country": "Australia",
+      "email": "jimmy@gmail.com",
       "role": "Write",
-      "status": "Active"
-    },
-    {
-      "id": 6,
-      "name": "Pavitrank Mishra",
-      "age": "21",
-      "country": "India",
-      "role": "Read",
-      "status": "Active"
+      "status": "Inactive"
     }
   ]
 }

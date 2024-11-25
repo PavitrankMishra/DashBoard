@@ -2,62 +2,62 @@ import React from "react";
 import { useState } from "react";
 import styles from "./AddUsers.css";
 
-const AddUsers = ({users, setUsers}) => {
-    const [formData, setFormData] = useState({
-        id: 0,
-        name: "",
-        age: "",
-        country: "",
-        role: "",
-        status: "",
+const AddUsers = ({ users, setUsers }) => {
+  const [formData, setFormData] = useState({
+    id: 0,
+    name: "",
+    age: "",
+    email: "",
+    role: "",
+    status: "",
+  });
+
+  const handleFormData = (e) => {
+    const { name, value } = e.target;
+    setFormData((prev) => ({
+      ...prev,
+      [name]: value,
+    }));
+  };
+
+  const handleAddUser = async () => {
+    if (
+      !formData.name ||
+      !formData.age ||
+      !formData.email ||
+      !formData.role ||
+      !formData.status
+    ) {
+      alert("All fields are required!");
+      return;
+    }
+
+    try {
+      const response = await fetch("http://localhost:5000/api/users", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(formData),
       });
-    
-      const handleFormData = (e) => {
-        const { name, value } = e.target;
-        setFormData((prev) => ({
-          ...prev,
-          [name]: value,
-        }));
-      };
-    
-      const handleAddUser = async () => {
-        if (
-          !formData.name ||
-          !formData.age ||
-          !formData.country ||
-          !formData.role ||
-          !formData.status
-        ) {
-          alert("All fields are required!");
-          return;
-        }
-    
-        try {
-          const response = await fetch("http://localhost:5000/api/users", {
-            method: "POST",
-            headers: {
-              "Content-Type": "application/json",
-            },
-            body: JSON.stringify(formData),
-          });
-    
-          if (!response.ok) {
-            throw new Error("Failed to add user");
-          }
-    
-          const newUser = await response.json();
-          console.log(newUser);
-          setUsers((prev) => [...prev, newUser]);
-    
-          alert("User added successfully!");
-        } catch (error) {
-          console.error("Error adding user:", error);
-        }
-      };
+
+      if (!response.ok) {
+        throw new Error("Failed to add user");
+      }
+
+      const newUser = await response.json();
+      console.log(newUser);
+      setUsers((prev) => [...prev, newUser]);
+
+      alert("User added successfully!");
+    } catch (error) {
+      console.error("Error adding user:", error);
+    }
+  };
   return (
     <>
       <div>
-        <h1>This is the users page</h1>
+        <h1>Add User</h1>
         <div className={styles.container}>
           <input
             type="text"
@@ -79,9 +79,9 @@ const AddUsers = ({users, setUsers}) => {
           />
           <input
             type="text"
-            name="country"
-            placeholder="Enter country"
-            value={formData.country}
+            name="email"
+            placeholder="Enter email"
+            value={formData.email}
             onChange={handleFormData}
             required
             className={styles.input}
@@ -96,8 +96,8 @@ const AddUsers = ({users, setUsers}) => {
             className={styles.input}
           />
 
-          <h1 className={styles.heading}>Role Status:</h1>
-          <div className={styles.radioGroup}>
+          <h1>Role Status:</h1>
+          <div className={styles.check}>
             <input
               type="radio"
               id="active"
