@@ -37,6 +37,15 @@ input[type="radio"] {
     height:18px;
 }
 
+label {
+  color:#ff4500;
+  font-weight:bold;
+  position:relative;
+  bottom:2px;
+  padding:5px;
+  font-size:24px;
+}
+
 
 /* Placeholder Styling */
 input::placeholder {
@@ -51,7 +60,7 @@ button {
   font-size: 18px;
   font-weight: bold;
   color: #fff;
-  background-color: #1e90ff;
+  background-color: #ff4500;
   border: none;
   border-radius: 8px;
   cursor: pointer;
