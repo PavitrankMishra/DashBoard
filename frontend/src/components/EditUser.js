@@ -1,4 +1,6 @@
 import { useState } from "react";
+import Header from "./Header";
+import styles from "./EditUser.module.css";
 
 const EditUser = ({ users, setUsers }) => {
   const [editingUser, setEditingUser] = useState(null);
@@ -52,7 +54,10 @@ const EditUser = ({ users, setUsers }) => {
   };
 
   return (
+    <>
+    <div className={styles.background}></div>
     <div>
+    <Header />
       <h1>Edit Users</h1>
       {users.length > 0 ? (
         users.map((user) => (
@@ -103,6 +108,7 @@ const EditUser = ({ users, setUsers }) => {
         <p>No users available</p>
       )}
     </div>
+    </>
   );
 };
 

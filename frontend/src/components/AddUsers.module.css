@@ -8,13 +8,28 @@ body {
   background-color: #f0f0f0;
   display: flex;
   justify-content: center; /* Center the body content horizontally */
-  /* align-items: center; Center the body content vertically */
-  /* height: 100vh; Full viewport height */
+/* align-items: center; Center the body content vertically */
+/* height: 100vh; Full viewport height */
 /* }  */
 
-*{
-  margin:0;
-  padding:0;
+* {
+  margin: 0;
+  padding: 0;
+}
+
+.background {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  background-image: url("../Images/img3.jpeg");
+  /* background:#ffbe1d; */
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  z-index: -1;
+  filter: blur(1px);
 }
 
 .container {
@@ -32,7 +47,7 @@ body {
 h2 {
   text-align: center;
   margin-bottom: 10px;
-  color: #1b1919;
+  color: rgb(22, 16, 63);
   text-transform: uppercase;
 }
 
@@ -41,7 +56,7 @@ h2 {
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  background: rgba(255, 255, 255, 0.8);
+  background: rgba(255, 243, 251, 0.511);
   border-radius: 12px;
   backdrop-filter: blur(15px);
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
@@ -53,34 +68,36 @@ h2 {
 
 input[type="text"] {
   height: 40px;
-  max-width: 500px; 
-  border: 2px solid #f76b8e;
+  max-width: 500px;
+  border: 2px solid black;
   border-radius: 5px;
   box-shadow: 0 5px 15px rgba(106, 13, 173, 0.3),
     0 -5px 15px rgba(106, 13, 173, 0.1);
   margin-bottom: 15px;
   padding: 0 10px;
   font-size: 16px;
-  margin-left: auto; 
-  margin-right: auto; 
-  width:480px;
+  margin-left: auto;
+  margin-right: auto;
+  width: 480px;
+  background-color: transparent;
 }
 
 input[type="text"]:focus {
+  color: #ffffff;
   outline: none;
-  border-color: #ff6f61;
-  box-shadow: 0 5px 15px rgba(255, 111, 97, 0.4),
-    0 -5px 15px rgba(255, 111, 97, 0.2);
+  border-color: #ffffff;
+  box-shadow: 0 5px 15px rgba(255, 255, 255, 0.4),
+    0 -5px 15px rgba(255, 255, 255, 0.2);
 }
 
 input[type="text"]:hover {
   transform: scale(1.05);
-  box-shadow: 0 10px 25px rgba(255, 111, 97, 0.4),
-    0 -10px 25px rgba(255, 111, 97, 0.2);
+  box-shadow: 0 10px 25px rgba(255, 255, 255, 0.4),
+    0 -10px 25px rgba(255, 255, 255, 0.2);
 }
 
 input[type="text"]::placeholder {
-  color: #888;
+  color: white;
   text-align: center;
   font-size: 18px;
 }
@@ -88,7 +105,8 @@ input[type="text"]::placeholder {
 input[type="radio"] {
   margin: 10px;
   position: relative;
-  top: 0px;
+  transform: scale(1.5);
+  cursor:pointer;
 }
 
 .label {
@@ -98,7 +116,7 @@ input[type="radio"] {
 }
 
 button {
-  background-color: #f76b8e;
+  background-color: #fb4e37;
   color: white;
   padding: 12px 30px;
   font-size: 16px;

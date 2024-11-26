@@ -57,10 +57,12 @@ const AddUsers = ({ users, setUsers }) => {
   };
   return (
     <>
+    <div className={styles.background}></div>
       <Header />
        <div className={styles.container}>
-        <h2 className={styles.h2}>Add Users</h2>
+
         <div className={styles.secondcontainer}>
+        <h2 className={styles.h2}>Add Users</h2>
           <div>
             <input
               type="text"

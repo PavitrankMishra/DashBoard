@@ -5,9 +5,11 @@
   font-family: "Poppins", sans-serif;
 }
 
-html,body {
-    background: linear-gradient(to right, #ff966d, #fa538d, #89379d);
-    background-size: cover; /* Ensure the gradient fills the container */
+/* html,body {
+    background: linear-gradient(to right, #cf5c2f, #fa538d, #89379d); 
+    background:#e5c0ff;
+    background-image:url("../src/Images/Image2.jpg");
+    background-size: cover; 
     background-position: center;
-    backdrop-filter: blur(30px);
-  }
+ z-index:1;
+  } */

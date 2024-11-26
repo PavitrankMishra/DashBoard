@@ -5,6 +5,7 @@ import { Link } from "react-router-dom";
 const HomePage = ({ users, setUsers }) => {
   return (
     <>
+    <div className={styles.background}></div>
       <Header />
       <div className={styles.container}>
         <div className={styles.secondcontainer}>
