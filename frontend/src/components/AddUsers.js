@@ -1,6 +1,7 @@
 import React from "react";
 import { useState } from "react";
-import styles from "./AddUsers.css";
+import styles from "./AddUsers.module.css";
+import Header from "./Header";
 
 const AddUsers = ({ users, setUsers }) => {
   const [formData, setFormData] = useState({
@@ -56,78 +57,91 @@ const AddUsers = ({ users, setUsers }) => {
   };
   return (
     <>
-      <div>
-        <h1>Add User</h1>
-        <div className={styles.container}>
-          <input
-            type="text"
-            name="name"
-            placeholder="Enter name"
-            value={formData.name}
-            onChange={handleFormData}
-            required
-            className={styles.input}
-          />
-          <input
-            type="text"
-            name="age"
-            placeholder="Enter age"
-            value={formData.age}
-            onChange={handleFormData}
-            required
-            className={styles.input}
-          />
-          <input
-            type="text"
-            name="email"
-            placeholder="Enter email"
-            value={formData.email}
-            onChange={handleFormData}
-            required
-            className={styles.input}
-          />
-          <input
-            type="text"
-            name="role"
-            placeholder="Enter role"
-            value={formData.role}
-            onChange={handleFormData}
-            required
-            className={styles.input}
-          />
+      <Header />
+       <div className={styles.container}>
+        <h2 className={styles.h2}>Add Users</h2>
+        <div className={styles.secondcontainer}>
+          <div>
+            <input
+              type="text"
+              name="name"
+              placeholder="Enter name"
+              value={formData.name}
+              onChange={handleFormData}
+              required
+              className={styles.input}
+            />
+          </div>
+          <div>
+            <input
+              type="text"
+              name="age"
+              placeholder="Enter age"
+              value={formData.age}
+              onChange={handleFormData}
+              required
+              className={styles.input}
+            />
+          </div>
+          <div>
+            <input
+              type="text"
+              name="email"
+              placeholder="Enter email"
+              value={formData.email}
+              onChange={handleFormData}
+              required
+              className={styles.input}
+            />
+          </div>
+          <div>
+            <input
+              type="text"
+              name="role"
+              placeholder="Enter role"
+              value={formData.role}
+              onChange={handleFormData}
+              required
+              className={styles.input}
+            />
+          </div>
+          <h2>Status:</h2>
+          <div className={styles.status}>
+            <div>
+              <input
+                type="radio"
+                id="active"
+                name="status"
+                value="Active"
+                checked={formData.status === "Active"}
+                onChange={handleFormData}
+                required
+                className={styles.radio}
+              />
+              <label htmlFor="active" className={styles.label}>
+                Active
+              </label>
+            </div>
 
-          <h1>Role Status:</h1>
-          <div className={styles.check}>
-            <input
-              type="radio"
-              id="active"
-              name="status"
-              value="Active"
-              checked={formData.status === "Active"}
-              onChange={handleFormData}
-              required
-              className={styles.radio}
-            />
-            <label htmlFor="active" className={styles.label}>
-              Active
-            </label>
-            <input
-              type="radio"
-              id="inactive"
-              name="status"
-              value="Inactive"
-              checked={formData.status === "Inactive"}
-              onChange={handleFormData}
-              required
-              className={styles.radio}
-            />
-            <label htmlFor="inactive" className={styles.label}>
-              Inactive
-            </label>
+            <div>
+              <input
+                type="radio"
+                id="inactive"
+                name="status"
+                value="Inactive"
+                checked={formData.status === "Inactive"}
+                onChange={handleFormData}
+                required
+                className={styles.radio}
+              />
+              <label htmlFor="inactive" className={styles.label}>
+                Inactive
+              </label>
+            </div>
           </div>
           <button onClick={handleAddUser}> Add User </button>
         </div>
-      </div>
+      </div> 
     </>
   );
 };

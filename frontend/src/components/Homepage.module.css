@@ -1,23 +1,28 @@
-
 * {
   margin: 0;
   padding: 0;
-  box-sizing: border-box;
-  font-family: "Merriweather", serif;
+  /* width: 100%;
+  height: 100%; */
+  font-family: "Poppins", sans-serif;  
 }
 
-/* body {
-  position: relative;
-  background:#d7fcfc;
-} */
+.container {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
 
-
-h2 {
-  text-align: center;
-  font-family: "Merriweather", serif;
-  font-size: 48px;
-  color: #ff6f61;
-  text-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+.secondcontainer {
+  display: flex;
+  flex-direction: column;
+  background: #f8d9d9;
+  border-radius:12px;
+  backdrop-filter: blur(15px); 
+  background: rgba(255, 255, 255, 0.3); 
+  z-index: 1;
 }
 
 .card {
@@ -29,11 +34,11 @@ h2 {
   margin: 15px auto;
   border-radius: 8px;
   box-shadow: 0 5px 15px rgba(106, 13, 173, 0.3), 0 -5px 15px rgba(106, 13, 173, 0.1);
-  /* background: linear-gradient(145deg, #6a0dad, #ff6f61); Modern gradient */
+  /* background: linear-gradient(145deg, #6a0dad, #ff6f61); */
   transition: transform 0.3s ease, box-shadow 0.3s ease;
   backdrop-filter:blur(30px);
   box-shadow:0px 0px 30px rgba(227, 228, 237, 0.37);
-  border: 3px solid black; /* Bold purple outline */
+  border: 3px solid black; 
 }
 
 .card:hover {
@@ -43,7 +48,7 @@ h2 {
 }
 
 .active {
-  background: linear-gradient(145deg, #ff4500, #ff6347); /* Gradient for active */
+  background: linear-gradient(145deg, #ff4500, #ff6347); 
   color: white;
   height: 40px;
   width: 130px;
@@ -55,7 +60,7 @@ h2 {
 }
 
 .inactive {
-  background: linear-gradient(145deg, #223838, #100e0e); /* Gradient for inactive */
+  background: linear-gradient(145deg, #223838, #100e0e);
   color: white;
   height: 40px;
   width: 130px;
@@ -79,17 +84,59 @@ h2 {
 h3 {
   text-align: center;
   margin-top: 20px;
-  color: #ff6f61;
+  color: black;
 }
 
 h3 a {
-  color: #ff6f61;
+  color: black;
   text-decoration: none;
   font-weight: bold;
   transition: color 0.3s ease, transform 0.3s ease;
 }
 
 h3 a:hover {
-  color: #6a0dad;
-  transform: scale(1.1); /* Slight scaling for hover effect */
+  color: #e7e7e7;
+  transform: scale(1.1);
+}
+
+@media (max-width: 768px) {
+  .card {
+    grid-template-columns: repeat(
+      3,
+      1fr
+    );
+    gap: 8px;
+  }
+
+  .active,
+  .inactive {
+    width: 100%;
+    height: auto;
+    padding: 10px 0;
+    font-size: 14px;
+  }
+
+  .secondcontainer {
+    width: 95%;
+    padding: 15px;
+  }
+}
+
+@media (max-width: 480px) {
+  .card {
+    grid-template-columns: repeat(
+      1,
+      1fr
+    );
+    gap: 5px;
+  }
+
+  .navigation {
+    flex-direction: column; 
+    gap: 15px;
+  }
+
+  h3 {
+    font-size: 16px;
+  }
 }
