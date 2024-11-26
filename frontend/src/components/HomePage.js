@@ -12,7 +12,7 @@ const HomePage = ({ users, setUsers }) => {
           <h2 className={styles.h2}>Users List</h2>
           {users.length > 0 ? (
             users.map((user) => (
-              <div key={user.id} className={styles.card}>
+              <div key={user.id} className={styles.pagecard}>
                 <p>
                   <strong>Name:</strong> {user.name}
                 </p>

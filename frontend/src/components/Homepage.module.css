@@ -41,11 +41,11 @@ h2 {
   /* background: #f8d9d9; */
   border-radius:12px;
   /* backdrop-filter: blur(400px);  */
-  background: rgba(255, 243, 251, 0.511); 
+  background: rgba(255, 243, 251, 0.783); 
   z-index: 1;
 }
 
-.card {
+.pagecard {
   display: grid;
   grid-template-columns: repeat(5, 1fr);
   width:95%;
@@ -58,13 +58,18 @@ h2 {
   transition: transform 0.3s ease, box-shadow 0.3s ease;
   backdrop-filter:blur(30px);
   box-shadow:0px 0px 30px rgba(255, 255, 255, 0.77);
-  border: 2px solid rgb(79, 78, 78); 
+  /* border: 2px solid rgb(79, 78, 78);  */
+  background-color: rgb(254, 254, 254);
 }
 
-.card:hover {
+.pagecard:hover {
   color: black;
-  transform: scale(1.05) rotateX(10deg); 
+  transform: scale(1.03) rotateX(10deg); 
   box-shadow: 0 5px 5px rgba(255, 255, 255, 0.563), 0 -5px 5px rgba(255, 255, 255, 0.563); 
+}
+
+.pagecard p {
+  width:max-content;
 }
 
 .active {
@@ -121,7 +126,7 @@ h3 a:hover {
 }
 
 @media (max-width: 768px) {
-  .card {
+  .pagecard {
     grid-template-columns: repeat(
       3,
       1fr
@@ -144,7 +149,7 @@ h3 a:hover {
 }
 
 @media (max-width: 480px) {
-  .card {
+  .pagecard {
     grid-template-columns: repeat(
       1,
       1fr

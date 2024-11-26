@@ -1,0 +1,120 @@
+/* General Styles */
+* {
+  margin: 0;
+  padding: 0;
+  font-family: "Poppins", sans-serif;
+  color: black;
+}
+
+/* Background Style */
+.background {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  background-image: url("../Images/img3.jpeg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  z-index: -1;
+  filter: blur(2px);
+}
+
+/* Container Styles */
+.secondContainer {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 20px;
+  background: rgba(203, 199, 199, 0.671);
+  border-radius: 12px;
+  box-shadow: 0px 0px 30px rgba(255, 255, 255, 0.5);
+  backdrop-filter: blur(10px);
+  color: black;
+  margin-top: 30px;
+}
+
+.heading {
+  text-align: center;
+  font-size: 2.5rem;
+  color: #fb4e37;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.8);
+  margin-bottom: 15px;
+}
+
+.subHeading {
+  text-align: center;
+  font-size: 1.8rem;
+  color: #160f3f;
+  margin-bottom: 25px;
+}
+
+/* User List */
+.userList {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+/* Card Style */
+.card {
+  display: grid;
+  grid-template-columns: 1fr 2fr 1fr 1fr auto;
+  align-items: center;
+  padding: 15px;
+  background: rgba(255, 255, 255, 0.9);
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.card:hover {
+  transform: scale(1.02);
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
+}
+
+.card p {
+  margin: 0;
+  font-size: 0.9rem;
+  color: #444;
+}
+
+/* Buttons */
+.deleteButton {
+  /* background: linear-gradient(145deg, #fbff00, #ff6347); */
+  background: linear-gradient(145deg, #ff01fe, #ff0000);
+  color: rgb(0, 0, 0);
+  border: none;
+  padding: 10px 20px;
+  border-radius: 5px;
+  font-size: 1rem;
+  cursor: pointer;
+  font-weight: 600;
+  transition: background 0.3s ease, transform 0.3s ease;
+}
+
+.deleteButton:hover {
+  background: linear-gradient(145deg, #ff0000, #ff01fe);
+  transform: scale(1.05);
+}
+
+/* Empty Message */
+.emptyMessage {
+  text-align: center;
+  font-size: 1.5rem;
+  color: #888;
+  margin-top: 20px;
+}
+
+/* Responsive Styles */
+@media (max-width: 768px) {
+  .card {
+    grid-template-columns: 1fr 1fr 1fr;
+    font-size: 0.85rem;
+  }
+
+  .deleteButton {
+    padding: 8px 15px;
+    font-size: 0.8rem;
+  }
+}

@@ -4,7 +4,13 @@ import styles from "./EditUser.module.css";
 
 const EditUser = ({ users, setUsers }) => {
   const [editingUser, setEditingUser] = useState(null);
-  const [formData, setFormData] = useState({ name: "", email: "", age: "" });
+  const [formData, setFormData] = useState({
+    name: "",
+    email: "",
+    age: "",
+    role: "",
+    status: "",
+  });
 
   const handleEditClick = (user) => {
     setEditingUser(user.id);
@@ -12,6 +18,8 @@ const EditUser = ({ users, setUsers }) => {
       name: user.name,
       email: user.email,
       age: user.age,
+      role: user.role,
+      status: user.status,
     });
   };
 
@@ -55,59 +63,84 @@ const EditUser = ({ users, setUsers }) => {
 
   return (
     <>
-    <div className={styles.background}></div>
-    <div>
-    <Header />
-      <h1>Edit Users</h1>
-      {users.length > 0 ? (
-        users.map((user) => (
-          <div key={user.id}>
-            {editingUser === user.id ? (
-              <div>
-                <input
-                  type="text"
-                  name="name"
-                  value={formData.name}
-                  onChange={handleInputChange}
-                  placeholder="Name"
-                />
-                <input
-                  type="email"
-                  name="email"
-                  value={formData.email}
-                  onChange={handleInputChange}
-                  placeholder="Email"
-                />
-                <input
-                  type="number"
-                  name="age"
-                  value={formData.age}
-                  onChange={handleInputChange}
-                  placeholder="Age"
-                />
-                <button onClick={() => handleSaveUser(user.id)}>Save</button>
-                <button onClick={() => setEditingUser(null)}>Cancel</button>
+      <div className={styles.background}></div>
+      <Header />
+      <div className={styles.container}>
+        <div className={styles.secondcontainer}>
+          <h2 className={styles.h2}>Edit Users</h2>
+          {users.length > 0 ? (
+            users.map((user) => (
+              <div key={user.id} className={styles.editcardparent}>
+                {editingUser === user.id ? (
+                  <div key={user.id} className={styles.editcard}>
+                    <input
+                      type="text"
+                      name="name"
+                      value={formData.name}
+                      onChange={handleInputChange}
+                      placeholder="Name"
+                    />
+                    <input
+                      type="text"
+                      name="email"
+                      value={formData.email}
+                      onChange={handleInputChange}
+                      placeholder="Email"
+                    />
+                    <input
+                      type="text"
+                      name="age"
+                      value={formData.age}
+                      onChange={handleInputChange}
+                      placeholder="Age"
+                    />
+                    <input
+                      type="text"
+                      name="role"
+                      value={formData.role}
+                      onChange={handleInputChange}
+                      placeholder="Role"
+                    />
+                    <input
+                      type="text"
+                      name="status"
+                      value={formData.status}
+                      onChange={handleInputChange}
+                      placeholder="Status"
+                    />
+                      <button onClick={() => handleSaveUser(user.id)} className={styles.save}>
+                        Save
+                      </button>
+                      <button onClick={() => setEditingUser(null)} className={styles.cancel}>
+                        Cancel
+                      </button>
+                  </div>
+                ) : (
+                  <div className={styles.card}>
+                    <p>
+                      <strong>Name:</strong> {user.name}
+                    </p>
+                    <p>
+                      <strong>Email:</strong> {user.email}
+                    </p>
+                    <p>
+                      <strong>Age:</strong> {user.age}
+                    </p>
+                    <p>
+                      <strong>Role:</strong> {user.role}{" "}
+                    </p>
+                    <button onClick={() => handleEditClick(user)}>
+                      Edit User
+                    </button>
+                  </div>
+                )}
               </div>
-            ) : (
-              <div>
-                <p>
-                  <strong>Name:</strong> {user.name}
-                </p>
-                <p>
-                  <strong>Email:</strong> {user.email}
-                </p>
-                <p>
-                  <strong>Age:</strong> {user.age}
-                </p>
-                <button onClick={() => handleEditClick(user)}>Edit User</button>
-              </div>
-            )}
-          </div>
-        ))
-      ) : (
-        <p>No users available</p>
-      )}
-    </div>
+            ))
+          ) : (
+            <p>No users available</p>
+          )}
+        </div>
+      </div>
     </>
   );
 };
