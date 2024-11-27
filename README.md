@@ -4,11 +4,12 @@ Link: https://role-admin-dashboard.netlify.app/
 The frontend of the website is not hosted on Netlify and the backend of the website is hosted on Render.
 
 Admin Dashboard Features:
-View List of Users:
+### View List of Users:
 
-You can access a list of all users in the system.
-This will display user details such as their name, email, and any other associated data in a tabular format.
-The list can be filtered or sorted based on user attributes (if implemented).
+1.) You can access a list of all users in the system.
+2.) This will display user details such as their name, email, and any other associated data in a tabular format.
+3.) The list can be filtered or sorted based on user attributes (if implemented).
+
 Edit a User:
 
 You can select any user from the list and make changes to their details.
