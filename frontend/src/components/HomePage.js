@@ -1,6 +1,5 @@
 import styles from "./Homepage.module.css";
 import Header from "./Header";
-import { Link } from "react-router-dom";
 import Navigation from "./Navigation";
 
 const HomePage = ({ users, setUsers }) => {
