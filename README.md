@@ -6,17 +6,18 @@ The frontend of the website is not hosted on Netlify and the backend of the webs
 Admin Dashboard Features:
 View List of Users:
 
-You can access a list of all users in the system. This will display user details such as their name, email, and any other associated data in a tabular format.
+You can access a list of all users in the system.
+This will display user details such as their name, email, and any other associated data in a tabular format.
 The list can be filtered or sorted based on user attributes (if implemented).
 Edit a User:
 
-You can select any user from the list and make changes to their details. This includes:
-Editing user information (e.g., name, email, role).
-Updating user-specific settings.
+You can select any user from the list and make changes to their details.
+This includes editing user information (e.g., name, email, role) and updating user-specific settings.
 This functionality typically involves opening a user-specific form, where fields are populated with the current user data, and you can modify and save it.
 Delete a User:
 
-Users can be deleted from the system. This will remove the user from the list and may also permanently delete any associated data (depending on your setup).
+Users can be deleted from the system.
+This will remove the user from the list and may also permanently delete any associated data (depending on your setup).
 A confirmation dialog may be included to prevent accidental deletions.
 Add a New User:
 
@@ -26,9 +27,6 @@ Email
 Password (if applicable)
 Role (e.g., Admin, User, etc.)
 After submitting the form, the new user is added to the system and can be viewed in the user list.
-
-If you want to access this locally on your system you will need to setup frontend and backend environment.
-
 Setup frontend environment:
 cd frontend
 npm install
