@@ -6,9 +6,9 @@ The frontend of the website is not hosted on Netlify and the backend of the webs
 Admin Dashboard Features:
 ### View List of Users:
 
-1.) You can access a list of all users in the system.
-2.) This will display user details such as their name, email, and any other associated data in a tabular format.
-3.) The list can be filtered or sorted based on user attributes (if implemented).
+### 1.) You can access a list of all users in the system.
+### 2.) This will display user details such as their name, email, and any other associated data in a tabular format.
+### 3.) The list can be filtered or sorted based on user attributes (if implemented).
 
 Edit a User:
 
