@@ -35,13 +35,16 @@ const AddUsers = ({ users, setUsers }) => {
     }
 
     try {
-      const response = await fetch("http://localhost:5000/api/users", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(formData),
-      });
+      const response = await fetch(
+        "https://dashboardbackend-1-wxhw.onrender.com/api/users",
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(formData),
+        }
+      );
 
       if (!response.ok) {
         throw new Error("Failed to add user");
@@ -58,12 +61,11 @@ const AddUsers = ({ users, setUsers }) => {
   };
   return (
     <>
-    <div className={styles.background}></div>
+      <div className={styles.background}></div>
       <Header />
-       <div className={styles.container}>
-
+      <div className={styles.container}>
         <div className={styles.secondcontainer}>
-        <h2 className={styles.h2}>Add Users</h2>
+          <h2 className={styles.h2}>Add Users</h2>
           <div>
             <input
               type="text"
@@ -145,7 +147,7 @@ const AddUsers = ({ users, setUsers }) => {
           <button onClick={handleAddUser}> Add User </button>
           <Navigation />
         </div>
-      </div> 
+      </div>
     </>
   );
 };

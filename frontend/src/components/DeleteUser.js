@@ -6,7 +6,7 @@ const DeleteUser = ({ users, setUsers }) => {
   const handleDeleteUser = async (userId) => {
     try {
       const response = await fetch(
-        `http://localhost:5000/api/users/${userId}`,
+        `https://dashboardbackend-1-wxhw.onrender.com/api/users/${userId}`,
         {
           method: "DELETE",
         }
