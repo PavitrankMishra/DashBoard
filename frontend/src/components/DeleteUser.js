@@ -1,10 +1,11 @@
 import styles from "./DeleteUser.module.css";
+import Navigation from "./Navigation";
 
 const DeleteUser = ({ users, setUsers }) => {
   const handleDeleteUser = async (userId) => {
     try {
       const response = await fetch(
-        "http://localhost:5000/api/users/${userId}",
+        `http://localhost:5000/api/users/${userId}`,
         {
           method: "DELETE",
         }
@@ -28,7 +29,6 @@ const DeleteUser = ({ users, setUsers }) => {
       <div className={styles.background}></div>
       <h1 className={styles.heading}>Delete User</h1>
       <div className={styles.secondContainer}>
-       
         <h2 className={styles.subHeading}>Users List</h2>
         <div className={styles.userList}>
           {users.length > 0 ? (
@@ -57,6 +57,7 @@ const DeleteUser = ({ users, setUsers }) => {
           ) : (
             <p className={styles.emptyMessage}>No users available</p>
           )}
+          <Navigation />
         </div>
       </div>
     </>

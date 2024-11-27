@@ -1,6 +1,7 @@
 import { useState } from "react";
 import Header from "./Header";
 import styles from "./EditUser.module.css";
+import Navigation from "./Navigation";
 
 const EditUser = ({ users, setUsers }) => {
   const [editingUser, setEditingUser] = useState(null);
@@ -108,12 +109,18 @@ const EditUser = ({ users, setUsers }) => {
                       onChange={handleInputChange}
                       placeholder="Status"
                     />
-                      <button onClick={() => handleSaveUser(user.id)} className={styles.save}>
-                        Save
-                      </button>
-                      <button onClick={() => setEditingUser(null)} className={styles.cancel}>
-                        Cancel
-                      </button>
+                    <button
+                      onClick={() => handleSaveUser(user.id)}
+                      className={styles.save}
+                    >
+                      Save
+                    </button>
+                    <button
+                      onClick={() => setEditingUser(null)}
+                      className={styles.cancel}
+                    >
+                      Cancel
+                    </button>
                   </div>
                 ) : (
                   <div className={styles.card}>
@@ -139,6 +146,7 @@ const EditUser = ({ users, setUsers }) => {
           ) : (
             <p>No users available</p>
           )}
+          <Navigation />
         </div>
       </div>
     </>

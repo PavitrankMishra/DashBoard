@@ -97,15 +97,7 @@ h2 {
   box-shadow: 0 4px 6px rgba(47, 79, 79, 0.3);
 }
 
-.navigation {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 30px;
-  text-transform: uppercase;
-  margin: 20px 0;
-  color: black;
-}
+
 
 h3 {
   text-align: center;

@@ -2,6 +2,7 @@ import React from "react";
 import { useState } from "react";
 import styles from "./AddUsers.module.css";
 import Header from "./Header";
+import Navigation from "./Navigation";
 
 const AddUsers = ({ users, setUsers }) => {
   const [formData, setFormData] = useState({
@@ -142,6 +143,7 @@ const AddUsers = ({ users, setUsers }) => {
             </div>
           </div>
           <button onClick={handleAddUser}> Add User </button>
+          <Navigation />
         </div>
       </div> 
     </>
