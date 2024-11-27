@@ -2,6 +2,7 @@ import { useState } from "react";
 import Header from "./Header";
 import styles from "./EditUser.module.css";
 import Navigation from "./Navigation";
+import NoUser from "./NoUser";
 
 const EditUser = ({ users, setUsers }) => {
   const [editingUser, setEditingUser] = useState(null);
@@ -143,7 +144,7 @@ const EditUser = ({ users, setUsers }) => {
               </div>
             ))
           ) : (
-            <p>No users available</p>
+            <NoUser />
           )}
           <Navigation />
         </div>

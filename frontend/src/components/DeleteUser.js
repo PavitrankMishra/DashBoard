@@ -1,5 +1,6 @@
 import styles from "./DeleteUser.module.css";
 import Navigation from "./Navigation";
+import NoUser from "./NoUser";
 
 const DeleteUser = ({ users, setUsers }) => {
   const handleDeleteUser = async (userId) => {
@@ -55,7 +56,7 @@ const DeleteUser = ({ users, setUsers }) => {
               </div>
             ))
           ) : (
-            <p className={styles.emptyMessage}>No users available</p>
+            <NoUser />
           )}
           <Navigation />
         </div>

@@ -1,6 +1,7 @@
 import styles from "./Homepage.module.css";
 import Header from "./Header";
 import Navigation from "./Navigation";
+import NoUser from "./NoUser";
 
 const HomePage = ({ users, setUsers }) => {
   return (
@@ -35,7 +36,7 @@ const HomePage = ({ users, setUsers }) => {
               </div>
             ))
           ) : (
-            <p>No users found</p>
+            <NoUser />
           )}
 
           <Navigation />

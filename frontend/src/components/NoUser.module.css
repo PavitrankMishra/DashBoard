@@ -1,0 +1,19 @@
+.noUser {
+  text-align: center;
+  font-weight: 500;
+  font-size: 24px;
+  text-transform: uppercase;
+}
+
+@media (max-width: 768px) {
+  .noUser {
+    font-size: 20px;
+  }
+}
+
+@media (max-width: 480px) {
+  .noUser {
+    font-size: 18px;
+    padding: 10px;
+  }
+}
