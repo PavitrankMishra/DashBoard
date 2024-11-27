@@ -44,7 +44,7 @@ const DeleteUser = ({ users, setUsers }) => {
                   <strong>Age:</strong> {user.age}
                 </p>
                 <p>
-                  <strong>Role:</strong> {user.role || "N/A"}
+                  <strong>Role:</strong> {user.role || "N/A"} {user.role === "Read" ? "📕" : "✏️" }
                 </p>
                 <button
                   className={styles.deleteButton}

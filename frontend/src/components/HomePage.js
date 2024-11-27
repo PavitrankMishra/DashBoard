@@ -24,7 +24,7 @@ const HomePage = ({ users, setUsers }) => {
                   <strong>Age:</strong> {user.age}
                 </p>
                 <p>
-                  <strong>Role:</strong> {user.role}
+                  <strong>Role:</strong> {user.role} {user.role === "Read" ? "📕" : "✏️" }
                 </p>
                 <p
                   className={

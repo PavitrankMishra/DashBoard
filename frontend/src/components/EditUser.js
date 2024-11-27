@@ -134,7 +134,7 @@ const EditUser = ({ users, setUsers }) => {
                       <strong>Age:</strong> {user.age}
                     </p>
                     <p>
-                      <strong>Role:</strong> {user.role}{" "}
+                      <strong>Role:</strong> {user.role}{user.role === "Read" ? "📕" : "✏️" }
                     </p>
                     <button onClick={() => handleEditClick(user)}>
                       Edit User
