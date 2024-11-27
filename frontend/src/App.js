@@ -28,9 +28,9 @@ function App() {
     <BrowserRouter>
       <Routes>
         <Route index element={<Homepage users={users} setUsers={setUsers} />} />
-        <Route path="addusers" element={<AddUsers users={users} setUsers={setUsers}/>} />
-        <Route path="editusers" element={<EditUser users={users} setUsers={setUsers}/>} />
-        <Route path="deleteusers" element={<DeleteUser users={users} setUsers={setUsers}/>} />
+        <Route path="/addusers" element={<AddUsers users={users} setUsers={setUsers}/>} />
+        <Route path="/editusers" element={<EditUser users={users} setUsers={setUsers}/>} />
+        <Route path="/deleteusers" element={<DeleteUser users={users} setUsers={setUsers}/>} />
       </Routes>
     </BrowserRouter>
   );

@@ -12,3 +12,20 @@
   margin: 20px 0;
   color: black;
 }
+
+@media (max-width: 768px) {
+  .navigation {
+    flex-direction: column;
+    gap: 15px;
+    margin: 10px 0;
+    text-align: center;
+  }
+}
+
+@media (max-width: 480px) {
+  .navigation {
+    gap: 10px;
+    font-size: 14px;
+    padding: 10px;
+  }
+}

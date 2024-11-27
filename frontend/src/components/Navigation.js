@@ -5,13 +5,13 @@ const Navigation = () => {
   return (
     <div className={styles.navigation}>
             <h3>
-              <Link to="addusers">Go to Add Users</Link>
+              <Link to="/addusers">Go to Add Users</Link>
             </h3>
             <h3>
-              <Link to="editusers">Go to Edit Users</Link>
+              <Link to="/editusers">Go to Edit Users</Link>
             </h3>
             <h3>
-              <Link to="deleteusers">Go to Delete Users</Link>
+              <Link to="/deleteusers">Go to Delete Users</Link>
             </h3>
           </div>
   );

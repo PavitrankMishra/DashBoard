@@ -92,7 +92,7 @@ input[type="radio"] {
   margin: 10px;
   position: relative;
   transform: scale(1.5);
-  cursor:pointer;
+  cursor: pointer;
 }
 
 .label {
@@ -111,8 +111,8 @@ button {
   cursor: pointer;
   transition: all 0.3s ease;
   margin-top: 10px;
-  margin-left: auto; /* Center the button horizontally */
-  margin-right: auto; /* Center the button horizontally */
+  margin-left: auto;
+  margin-right: auto;
 }
 
 button:hover {
