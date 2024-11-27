@@ -32,7 +32,7 @@ const EditUser = ({ users, setUsers }) => {
   const handleSaveUser = async (userId) => {
     try {
       const response = await fetch(
-        "http://localhost:5000/api/users/${userId}",
+        `http://localhost:5000/api/users/${userId}`,
         {
           method: "PUT",
           headers: {
