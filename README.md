@@ -45,6 +45,19 @@ Start the frontend server
 ### nodemon index.js 
 Start the backend server
 
+### Picture 1
+![image](https://github.com/user-attachments/assets/1693fe6d-8c50-4af4-b9a7-bccae50b3f3d)
+
+### Picture 2
+![image](https://github.com/user-attachments/assets/0b163fe4-e516-4214-a1d3-0f28e56f87db)
+
+### Picture 3
+![image](https://github.com/user-attachments/assets/289dc708-2976-4a61-b471-bd5a81d326c6)
+
+### Picture 4
+![image](https://github.com/user-attachments/assets/e8ec96c7-82ab-40f8-a74d-6704c09d4155)
+
+
 
 
 
