@@ -48,13 +48,11 @@ const EditUser = ({ users, setUsers }) => {
 
       const updatedUser = await response.json();
 
-      // Update the user in local state
+      setUsers((prevUsers) =>
+        prevUsers.map((user) => (user.id === userId ? updatedUser : user))
+      );
 
-      setUsers((prevUsers) => {
-        prevUsers.map((user) => (user.id === userId ? updatedUser : user));
-      });
-
-      setEditingUser(null); // Close the editing form
+      setEditingUser(null);
       alert("User updated successfully!");
     } catch (err) {
       console.error("Error updating user:", err);
@@ -134,7 +132,8 @@ const EditUser = ({ users, setUsers }) => {
                       <strong>Age:</strong> {user.age}
                     </p>
                     <p>
-                      <strong>Role:</strong> {user.role}{user.role === "Read" ? "📕" : "✏️" }
+                      <strong>Role:</strong> {user.role}
+                      {user.role === "Read" ? "📕" : "✏️"}
                     </p>
                     <button onClick={() => handleEditClick(user)}>
                       Edit User

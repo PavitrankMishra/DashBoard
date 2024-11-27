@@ -24,31 +24,11 @@ app.get("/", (req, res) => {
   });
 });
 
-// Route to get a single user
-
-app.get("/api/users/:id", (req, res) => {
-  const filePath = path.join(__dirname, "db.json");
-  fs.readFile(filePath, "utf8", (err, data) => {
-    if (err) {
-      console.log("Error reading file: " + err);
-      res.status(500).send({ error: "Unable to read file " });
-    } else {
-      const users = JSON.parse(data).users;
-      const user = users.find((u) => u.id === parseInt(req.params.id));
-      if (user) {
-        res.json(user);
-      } else {
-        res.status(404).send({ error: "User not found" });
-      }
-    }
-  });
-});
-
 // Route to add a new user
 app.post("/api/users", (req, res) => {
-  const { id, name, age, country, role, status } = req.body;
+  const { id, name, age, email, role, status } = req.body;
 
-  const newUser = { id, name, age, country, role, status };
+  const newUser = { id, name, age, email, role, status };
   const filePath = path.join(__dirname, "db.json");
 
   fs.readFile(filePath, "utf8", (err, data) => {
@@ -67,7 +47,6 @@ app.post("/api/users", (req, res) => {
       return;
     }
 
-    // Update the `id` dynamically to avoid duplicates
     newUser.id =
       usersData.users.length > 0
         ? usersData.users[usersData.users.length - 1].id + 1
@@ -91,7 +70,7 @@ app.post("/api/users", (req, res) => {
 
 app.put("/api/users/:id", (req, res) => {
   const userId = parseInt(req.params.id);
-  const { name, email, age } = req.body;
+  const { name, email, age, role, status } = req.body;
   const filePath = path.join(__dirname, "db.json");
 
   fs.readFile(filePath, "utf8", (err, data) => {
@@ -111,6 +90,8 @@ app.put("/api/users/:id", (req, res) => {
       name,
       email,
       age,
+      role,
+      status
     };
 
     fs.writeFile(filePath, JSON.stringify(userData, null, 2), (err) => {
