@@ -20,6 +20,7 @@ app.get("/", (req, res) => {
     } else {
       res.setHeader("Content-Type", "application/json");
       res.send(data);
+      console.log("All users sent" + data);
     }
   });
 });
@@ -56,11 +57,11 @@ app.post("/api/users", (req, res) => {
 
     fs.writeFile(filePath, JSON.stringify(usersData, null, 2), (err) => {
       if (err) {
-        console.error("Error writing to file:", err);
+        console.log("Error writing to file:", err);
         res.status(500).send({ error: "Unable to save user" });
         return;
       }
-      console.log("New user added successfully!");
+      console.log("New user added successfully! :" + newUser);
       res.status(200).send(newUser);
     });
   });
@@ -75,6 +76,7 @@ app.put("/api/users/:id", (req, res) => {
 
   fs.readFile(filePath, "utf8", (err, data) => {
     if (err) {
+      console.error("Error reading file:", err);
       return res.status(500).send({ message: "Error reading data file" });
     }
 
@@ -82,6 +84,7 @@ app.put("/api/users/:id", (req, res) => {
     const userIndex = userData.users.findIndex((user) => user.id === userId);
 
     if (userIndex === -1) {
+      console.error("User not found:", userId);
       return res.status(404).send({ message: "User not found" });
     }
 
@@ -91,13 +94,17 @@ app.put("/api/users/:id", (req, res) => {
       email,
       age,
       role,
-      status
+      status,
     };
 
+    // Write the updated data back to the file
     fs.writeFile(filePath, JSON.stringify(userData, null, 2), (err) => {
       if (err) {
+        console.log("Error saving file:", err);
         return res.status(500).send({ message: "Error saving data" });
       }
+
+      console.log("User updated successfully:", userData.users[userIndex]);
       res.status(200).send(userData.users[userIndex]);
     });
   });

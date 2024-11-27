@@ -3,17 +3,17 @@
     {
       "id": 1,
       "name": "James Anderson",
-      "age": 28,
+      "age": "29",
       "email": "james@gmail.com",
-      "role": "Read",
+      "role": "Write",
       "status": "Active"
     },
     {
       "id": 2,
       "name": "Pavitrank Mishra",
-      "age": "21",
+      "age": "22",
       "email": "pavitrank2002@gmail.com",
-      "role": "Read",
+      "role": "Write",
       "status": "Active"
     },
     {
